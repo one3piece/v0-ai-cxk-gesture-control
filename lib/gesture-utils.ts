@@ -22,13 +22,25 @@ export interface HandLandmark {
 }
 
 interface SwipeTracker {
-  positions: { x: number; time: number }[]
+  positions: { x: number; y: number; time: number }[]
   lastSwipeTime: number
 }
 
 const swipeTracker: SwipeTracker = {
   positions: [],
   lastSwipeTime: 0,
+}
+
+function palmCenter(landmarks: HandLandmark[]): { x: number; y: number } {
+  // Average of wrist(0), index_mcp(5), middle_mcp(9), ring_mcp(13), pinky_mcp(17)
+  const ids = [0, 5, 9, 13, 17]
+  let sx = 0
+  let sy = 0
+  for (const i of ids) {
+    sx += landmarks[i].x
+    sy += landmarks[i].y
+  }
+  return { x: sx / ids.length, y: sy / ids.length }
 }
 
 function isFingerExtended(landmarks: HandLandmark[], tipIdx: number, pipIdx: number): boolean {
@@ -64,26 +76,39 @@ export function detectGesture(
 
   const landmarks = handsLandmarks[0]
 
-  // Check for swipe
+  // Check for swipe using palm center movement on an open palm
   const now = Date.now()
-  const wristX = landmarks[0].x
-  swipeTracker.positions.push({ x: wristX, time: now })
+  const palm = palmCenter(landmarks)
+  const palmIsOpen = isOpenPalm(landmarks)
 
-  // Keep only last 300ms of data
+  if (palmIsOpen) {
+    swipeTracker.positions.push({ x: palm.x, y: palm.y, time: now })
+  } else {
+    // Reset tracker when hand is not open — swipes only count with open palm
+    swipeTracker.positions = []
+  }
+
+  // Keep only last 400ms of data
   swipeTracker.positions = swipeTracker.positions.filter(
-    (p) => now - p.time < 300
+    (p) => now - p.time < 400,
   )
 
   if (
     swipeTracker.positions.length >= 3 &&
-    now - swipeTracker.lastSwipeTime > 600
+    now - swipeTracker.lastSwipeTime > 500
   ) {
     const first = swipeTracker.positions[0]
     const last = swipeTracker.positions[swipeTracker.positions.length - 1]
     const deltaX = last.x - first.x
+    const deltaY = Math.abs(last.y - first.y)
     const timeDelta = last.time - first.time
 
-    if (timeDelta > 50 && Math.abs(deltaX) > 0.12) {
+    // Require: enough horizontal movement, mostly horizontal (not vertical), fast enough
+    if (
+      timeDelta > 40 &&
+      Math.abs(deltaX) > 0.07 &&
+      Math.abs(deltaX) > deltaY * 1.5
+    ) {
       swipeTracker.lastSwipeTime = now
       swipeTracker.positions = []
       // MediaPipe mirrors: positive deltaX = visual left

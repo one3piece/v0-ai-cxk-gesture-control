@@ -137,13 +137,22 @@ export default function HandTracker({ onGesture, enabled }: HandTrackerProps) {
             // Detect gesture
             if (results.landmarks && results.landmarks.length > 0) {
               const raw = detectGesture(results.landmarks)
-              const debounced = debouncerRef.current.update(raw)
 
-              if (debounced !== "none" && debounced !== gestureRef.current) {
-                gestureRef.current = debounced
-                throttleGesture(debounced)
-              } else if (debounced === "none") {
-                gestureRef.current = "none"
+              // Swipe gestures bypass the debouncer — they have their own
+              // built-in cooldown inside the swipe tracker
+              const isSwipe =
+                raw === "swipe_left" || raw === "swipe_right"
+
+              if (isSwipe) {
+                throttleGesture(raw)
+              } else {
+                const debounced = debouncerRef.current.update(raw)
+                if (debounced !== "none" && debounced !== gestureRef.current) {
+                  gestureRef.current = debounced
+                  throttleGesture(debounced)
+                } else if (debounced === "none") {
+                  gestureRef.current = "none"
+                }
               }
             } else {
               gestureRef.current = "none"
