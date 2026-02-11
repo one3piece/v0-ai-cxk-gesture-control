@@ -2,6 +2,7 @@ export interface TarotCard {
   id: string
   title: string
   emoji: string
+  image: string
   arcana: string
   description: string
   fortune: string
@@ -16,6 +17,7 @@ export const tarotCards: TarotCard[] = [
     id: "fool",
     title: "The Kun",
     emoji: "🏀",
+    image: "/images/cards/fool.jpg",
     arcana: "0 - The Fool",
     description: "A young practitioner steps onto the court of destiny, basketball in hand, dreams in heart.",
     fortune: "Today you shall dribble past all obstacles! Your energy is at max.",
@@ -28,6 +30,7 @@ export const tarotCards: TarotCard[] = [
     id: "magician",
     title: "The Rapper",
     emoji: "🎤",
+    image: "/images/cards/magician.jpg",
     arcana: "I - The Magician",
     description: "Master of Sing, Jump, Rap, Basketball. All talents converge in one.",
     fortune: "Your freestyle will flow like water today. Creative energy overload!",
@@ -40,6 +43,7 @@ export const tarotCards: TarotCard[] = [
     id: "priestess",
     title: "The Trainee",
     emoji: "⏰",
+    image: "/images/cards/priestess.jpg",
     arcana: "II - The High Priestess",
     description: "Two and a half years of dedicated practice. Patience is the ultimate skill.",
     fortune: "Keep practicing! In exactly 2.5 years you will achieve greatness.",
@@ -52,6 +56,7 @@ export const tarotCards: TarotCard[] = [
     id: "emperor",
     title: "The Idol",
     emoji: "👑",
+    image: "/images/cards/emperor.jpg",
     arcana: "IV - The Emperor",
     description: "The supreme idol producer commands the stage with overalls of power.",
     fortune: "Leadership energy! You are the center of attention today.",
@@ -64,6 +69,7 @@ export const tarotCards: TarotCard[] = [
     id: "lovers",
     title: "The Fans",
     emoji: "💕",
+    image: "/images/cards/lovers.jpg",
     arcana: "VI - The Lovers",
     description: "An army of devoted fans chanting in unison. Love transcends all.",
     fortune: "Popularity skyrockets! Everyone wants to be your friend today.",
@@ -76,6 +82,7 @@ export const tarotCards: TarotCard[] = [
     id: "chariot",
     title: "The Dancer",
     emoji: "🕺",
+    image: "/images/cards/chariot.jpg",
     arcana: "VII - The Chariot",
     description: "Moving forward with unstoppable dance moves. Nobody can hold you back.",
     fortune: "Momentum is on your side! Dance through every challenge today.",
@@ -88,6 +95,7 @@ export const tarotCards: TarotCard[] = [
     id: "strength",
     title: "The Dunker",
     emoji: "💪",
+    image: "/images/cards/strength.jpg",
     arcana: "VIII - Strength",
     description: "Raw basketball power channeled through sheer willpower and cool hair.",
     fortune: "Physical and mental strength peaked! Nothing can defeat you.",
@@ -100,6 +108,7 @@ export const tarotCards: TarotCard[] = [
     id: "wheel",
     title: "The Viral",
     emoji: "🔄",
+    image: "/images/cards/wheel.jpg",
     arcana: "X - Wheel of Fortune",
     description: "The meme cycle turns eternally. Today you trend, tomorrow you trend harder.",
     fortune: "Luck spins in your favor! Expect unexpected viral moments.",
@@ -112,6 +121,7 @@ export const tarotCards: TarotCard[] = [
     id: "tower",
     title: "The Iron Hill",
     emoji: "⛰️",
+    image: "/images/cards/tower.jpg",
     arcana: "XVI - The Tower",
     description: "A devastating shoulder tackle that shakes the very foundations of reality.",
     fortune: "Brace for impact! Big changes incoming but you will land on your feet.",
@@ -124,6 +134,7 @@ export const tarotCards: TarotCard[] = [
     id: "star",
     title: "The Dreamer",
     emoji: "⭐",
+    image: "/images/cards/star.jpg",
     arcana: "XVII - The Star",
     description: "Under neon stars, a dreamer practices alone. The stage awaits.",
     fortune: "Hope shines bright! Your dreams are closer than you think.",
@@ -136,6 +147,7 @@ export const tarotCards: TarotCard[] = [
     id: "sun",
     title: "The Smile",
     emoji: "😏",
+    image: "/images/cards/sun.jpg",
     arcana: "XIX - The Sun",
     description: "That iconic confident smile that launched a thousand memes.",
     fortune: "Radiant confidence today! Your smile is your ultimate weapon.",
@@ -148,6 +160,7 @@ export const tarotCards: TarotCard[] = [
     id: "world",
     title: "The Legend",
     emoji: "🌍",
+    image: "/images/cards/world.jpg",
     arcana: "XXI - The World",
     description: "Global domination achieved. From trainee to eternal internet legend.",
     fortune: "Complete success! The entire world is your stage today.",

@@ -24,13 +24,14 @@ const phaseInstructions: Record<
   selecting: {
     label: "SELECT A CARD",
     gestures: [
-      { icon: "swipe", text: "Swipe to browse" },
+      { icon: "left", text: "Swipe left" },
+      { icon: "right", text: "Swipe right" },
       { icon: "fist", text: "Fist to select" },
     ],
   },
   revealing: {
     label: "REVEALING",
-    gestures: [{ icon: "ok", text: "OK gesture to flip" }],
+    gestures: [{ icon: "wait", text: "Revealing your fortune..." }],
   },
   result: {
     label: "YOUR FORTUNE",
@@ -41,8 +42,8 @@ const phaseInstructions: Record<
 const gestureIcons: Record<string, string> = {
   hand: "\u270B",
   fist: "\u270A",
-  ok: "\uD83D\uDC4C",
-  swipe: "\uD83D\uDC48\uD83D\uDC49",
+  left: "\u2190",
+  right: "\u2192",
   hands: "\uD83D\uDE4C",
   wait: "\u23F3",
   "...": "\u2699\uFE0F",

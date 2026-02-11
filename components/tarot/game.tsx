@@ -125,13 +125,6 @@ export default function TarotGame() {
           }
           break
 
-        case "ok":
-          if (phase === "selecting") {
-            audioManager.selectSound()
-            selectCard()
-          }
-          break
-
         case "two_hands":
           if (phase === "result" || phase === "selecting") {
             audioManager.gestureDetectedSound()
@@ -171,9 +164,24 @@ export default function TarotGame() {
           {phase === "ready" ? (
             <div className="flex flex-col items-center gap-6 animate-float">
               <div className="w-24 h-24 rounded-full border-2 border-neon-cyan/50 flex items-center justify-center animate-neon-pulse">
-                <span className="text-5xl" role="img" aria-label="open hand">
-                  {"\u270B"}
-                </span>
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.84 0-16-7.16-16-16S15.16 8 24 8s16 7.16 16 16-7.16 16-16 16z"
+                    fill="hsl(195 100% 50%)"
+                    opacity={0.3}
+                  />
+                  <path
+                    d="M18 16v4l-2 2v8l2 2h2l2-4h4l2 4h2l2-2v-8l-2-2v-4h-4v2h-4v-2h-4z"
+                    fill="hsl(195 100% 50%)"
+                    opacity={0.8}
+                  />
+                </svg>
               </div>
               <p className="font-mono text-sm text-neon-cyan/80 text-center max-w-xs">
                 {"Raise your open palm to start the reading"}

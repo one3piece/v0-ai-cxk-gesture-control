@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import type { TarotCard } from "@/lib/tarot-data"
 
 interface ResultOverlayProps {
@@ -29,17 +30,27 @@ export default function ResultOverlay({ card, visible }: ResultOverlayProps) {
           animation: visible ? "resultFadeIn 0.8s ease-out" : "none",
         }}
       >
-        {/* Glowing emoji */}
+        {/* Card art image */}
         <div
-          className="w-28 h-28 rounded-full flex items-center justify-center text-6xl animate-float"
+          className="w-32 h-32 rounded-2xl overflow-hidden animate-float relative"
           style={{
-            background: `radial-gradient(circle, ${card.color}33, transparent)`,
             boxShadow: `0 0 60px ${card.color}44, 0 0 120px ${card.color}22`,
+            border: `2px solid ${card.color}66`,
           }}
         >
-          <span role="img" aria-label={card.title}>
-            {card.emoji}
-          </span>
+          <Image
+            src={card.image || "/placeholder.svg"}
+            alt={card.title}
+            fill
+            className="object-cover"
+            sizes="128px"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(circle, transparent 50%, ${card.color}22 100%)`,
+            }}
+          />
         </div>
 
         {/* Title */}
