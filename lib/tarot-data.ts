@@ -1,0 +1,164 @@
+export interface TarotCard {
+  id: string
+  title: string
+  emoji: string
+  arcana: string
+  description: string
+  fortune: string
+  keyword: string
+  color: string
+  gradientFrom: string
+  gradientTo: string
+}
+
+export const tarotCards: TarotCard[] = [
+  {
+    id: "fool",
+    title: "The Kun",
+    emoji: "🏀",
+    arcana: "0 - The Fool",
+    description: "A young practitioner steps onto the court of destiny, basketball in hand, dreams in heart.",
+    fortune: "Today you shall dribble past all obstacles! Your energy is at max.",
+    keyword: "Ji Ni Tai Mei",
+    color: "#00d4ff",
+    gradientFrom: "#0ea5e9",
+    gradientTo: "#6366f1",
+  },
+  {
+    id: "magician",
+    title: "The Rapper",
+    emoji: "🎤",
+    arcana: "I - The Magician",
+    description: "Master of Sing, Jump, Rap, Basketball. All talents converge in one.",
+    fortune: "Your freestyle will flow like water today. Creative energy overload!",
+    keyword: "Sing Jump Rap",
+    color: "#c084fc",
+    gradientFrom: "#a855f7",
+    gradientTo: "#ec4899",
+  },
+  {
+    id: "priestess",
+    title: "The Trainee",
+    emoji: "⏰",
+    arcana: "II - The High Priestess",
+    description: "Two and a half years of dedicated practice. Patience is the ultimate skill.",
+    fortune: "Keep practicing! In exactly 2.5 years you will achieve greatness.",
+    keyword: "2.5 Years",
+    color: "#f472b6",
+    gradientFrom: "#ec4899",
+    gradientTo: "#f43f5e",
+  },
+  {
+    id: "emperor",
+    title: "The Idol",
+    emoji: "👑",
+    arcana: "IV - The Emperor",
+    description: "The supreme idol producer commands the stage with overalls of power.",
+    fortune: "Leadership energy! You are the center of attention today.",
+    keyword: "Idol Producer",
+    color: "#fbbf24",
+    gradientFrom: "#f59e0b",
+    gradientTo: "#ef4444",
+  },
+  {
+    id: "lovers",
+    title: "The Fans",
+    emoji: "💕",
+    arcana: "VI - The Lovers",
+    description: "An army of devoted fans chanting in unison. Love transcends all.",
+    fortune: "Popularity skyrockets! Everyone wants to be your friend today.",
+    keyword: "IKUN Forever",
+    color: "#fb7185",
+    gradientFrom: "#f43f5e",
+    gradientTo: "#d946ef",
+  },
+  {
+    id: "chariot",
+    title: "The Dancer",
+    emoji: "🕺",
+    arcana: "VII - The Chariot",
+    description: "Moving forward with unstoppable dance moves. Nobody can hold you back.",
+    fortune: "Momentum is on your side! Dance through every challenge today.",
+    keyword: "Dance King",
+    color: "#34d399",
+    gradientFrom: "#10b981",
+    gradientTo: "#06b6d4",
+  },
+  {
+    id: "strength",
+    title: "The Dunker",
+    emoji: "💪",
+    arcana: "VIII - Strength",
+    description: "Raw basketball power channeled through sheer willpower and cool hair.",
+    fortune: "Physical and mental strength peaked! Nothing can defeat you.",
+    keyword: "Power Dunk",
+    color: "#f97316",
+    gradientFrom: "#f97316",
+    gradientTo: "#eab308",
+  },
+  {
+    id: "wheel",
+    title: "The Viral",
+    emoji: "🔄",
+    arcana: "X - Wheel of Fortune",
+    description: "The meme cycle turns eternally. Today you trend, tomorrow you trend harder.",
+    fortune: "Luck spins in your favor! Expect unexpected viral moments.",
+    keyword: "Trending Now",
+    color: "#a78bfa",
+    gradientFrom: "#8b5cf6",
+    gradientTo: "#6366f1",
+  },
+  {
+    id: "tower",
+    title: "The Iron Hill",
+    emoji: "⛰️",
+    arcana: "XVI - The Tower",
+    description: "A devastating shoulder tackle that shakes the very foundations of reality.",
+    fortune: "Brace for impact! Big changes incoming but you will land on your feet.",
+    keyword: "Iron Hill Bump",
+    color: "#ef4444",
+    gradientFrom: "#dc2626",
+    gradientTo: "#9333ea",
+  },
+  {
+    id: "star",
+    title: "The Dreamer",
+    emoji: "⭐",
+    arcana: "XVII - The Star",
+    description: "Under neon stars, a dreamer practices alone. The stage awaits.",
+    fortune: "Hope shines bright! Your dreams are closer than you think.",
+    keyword: "Music Dream",
+    color: "#60a5fa",
+    gradientFrom: "#3b82f6",
+    gradientTo: "#8b5cf6",
+  },
+  {
+    id: "sun",
+    title: "The Smile",
+    emoji: "😏",
+    arcana: "XIX - The Sun",
+    description: "That iconic confident smile that launched a thousand memes.",
+    fortune: "Radiant confidence today! Your smile is your ultimate weapon.",
+    keyword: "Kun Smile",
+    color: "#fbbf24",
+    gradientFrom: "#eab308",
+    gradientTo: "#f97316",
+  },
+  {
+    id: "world",
+    title: "The Legend",
+    emoji: "🌍",
+    arcana: "XXI - The World",
+    description: "Global domination achieved. From trainee to eternal internet legend.",
+    fortune: "Complete success! The entire world is your stage today.",
+    keyword: "World Tour",
+    color: "#2dd4bf",
+    gradientFrom: "#14b8a6",
+    gradientTo: "#3b82f6",
+  },
+]
+
+export function getRandomCards(count: number): TarotCard[] {
+  const shuffled = [...tarotCards].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, count)
+}

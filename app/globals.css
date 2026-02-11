@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 240 20% 4%;
+    --foreground: 220 20% 95%;
+    --card: 240 15% 8%;
+    --card-foreground: 220 20% 95%;
+    --popover: 240 15% 8%;
+    --popover-foreground: 220 20% 95%;
+    --primary: 260 100% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 15% 15%;
+    --secondary-foreground: 220 20% 95%;
+    --muted: 240 15% 15%;
+    --muted-foreground: 240 10% 55%;
+    --accent: 195 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 340 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 260 30% 25%;
+    --input: 240 15% 15%;
+    --ring: 260 100% 65%;
+    --radius: 0.75rem;
+
+    --neon-blue: 195 100% 50%;
+    --neon-pink: 330 100% 65%;
+    --neon-purple: 270 100% 65%;
+    --neon-cyan: 180 100% 50%;
+
+    --chart-1: 260 100% 65%;
+    --chart-2: 195 100% 50%;
+    --chart-3: 330 100% 65%;
+    --chart-4: 270 100% 65%;
+    --chart-5: 180 100% 50%;
+
+    --sidebar-background: 240 15% 8%;
+    --sidebar-foreground: 220 20% 95%;
+    --sidebar-primary: 260 100% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 15% 15%;
+    --sidebar-accent-foreground: 220 20% 95%;
+    --sidebar-border: 260 30% 25%;
+    --sidebar-ring: 260 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow: hidden;
+  }
+}
+
+/* Neon glow utilities */
+.neon-text-blue {
+  text-shadow:
+    0 0 7px hsl(195 100% 50% / 0.8),
+    0 0 20px hsl(195 100% 50% / 0.5),
+    0 0 42px hsl(195 100% 50% / 0.3);
+}
+
+.neon-text-pink {
+  text-shadow:
+    0 0 7px hsl(330 100% 65% / 0.8),
+    0 0 20px hsl(330 100% 65% / 0.5),
+    0 0 42px hsl(330 100% 65% / 0.3);
+}
+
+.neon-text-purple {
+  text-shadow:
+    0 0 7px hsl(270 100% 65% / 0.8),
+    0 0 20px hsl(270 100% 65% / 0.5),
+    0 0 42px hsl(270 100% 65% / 0.3);
+}
+
+.neon-border {
+  box-shadow:
+    0 0 5px hsl(260 100% 65% / 0.5),
+    0 0 15px hsl(260 100% 65% / 0.3),
+    inset 0 0 5px hsl(260 100% 65% / 0.2);
+}
+
+.neon-border-cyan {
+  box-shadow:
+    0 0 5px hsl(195 100% 50% / 0.5),
+    0 0 15px hsl(195 100% 50% / 0.3),
+    inset 0 0 5px hsl(195 100% 50% / 0.2);
+}
+
+.glass {
+  background: hsl(240 15% 8% / 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid hsl(260 30% 25% / 0.5);
+}
+
+/* Card 3D */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Pulse animation for gesture prompts */
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes card-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px hsl(260 100% 65% / 0.4),
+      0 0 30px hsl(260 100% 65% / 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px hsl(260 100% 65% / 0.6),
+      0 0 50px hsl(260 100% 65% / 0.3),
+      0 0 80px hsl(260 100% 65% / 0.15);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-card-glow {
+  animation: card-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Explosion particles */
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+.animate-explode {
+  animation: explode 0.8s ease-out forwards;
+}
