@@ -34,7 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" className="dark">
-      <body className="font-sans antialiased overflow-hidden">
+      <body
+        className={`${_spaceGrotesk.variable} ${_orbitron.variable} font-sans antialiased overflow-hidden`}
+      >
         {children}
       </body>
     </html>
